@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <title>SANNU MD OFFICIAL</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <style>
+    /* 🔴 RED CYBER SYSTEM STYLE 🔴 */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at center, #0a0000 0%, #000 80%);
+  font-family: 'Orbitron', Arial, sans-serif;
+  overflow: hidden;
+  color: #ff1e56;
+}
+
+/* floating neon effect background */
+body::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 0, 60, 0.15), transparent 70%);
+  top: 10%;
+  left: 20%;
+  filter: blur(80px);
+  z-index: 0;
+  animation: pulse 6s infinite alternate;
+}
+body::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 50, 0, 0.2), transparent 70%);
+  bottom: 10%;
+  right: 15%;
+  filter: blur(100px);
+  z-index: 0;
+  animation: pulse 8s infinite alternate-reverse;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.3); opacity: 0.4; }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.box {
+  width: 340px;
+  padding: 25px;
+  background-color: rgba(10, 0, 0, 0.85);
+  border-radius: 12px;
+  text-align: center;
+  box-shadow:
+    0 0 20px rgba(255, 0, 60, 0.6),
+    0 0 50px rgba(255, 0, 0, 0.25) inset;
+  border: 1px solid rgba(255, 0, 60, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+h3, h6 {
+  color: #ff003c;
+  margin: 10px 0;
+  text-shadow: 0 0 8px rgba(255, 0, 60, 0.8);
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+h6 {
+  font-weight: 400;
+  color: #ff6a6a;
+  font-size: 0.9rem;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.input-container input,
+.input-container button {
+  height: 3rem;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.input-container input {
+  width: 70%;
+  border-radius: 0.8rem 0 0 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding-left: 1rem;
+  border: 1px solid rgba(255, 0, 60, 0.3);
+  transition: all 0.3s ease;
+}
+
+.input-container input:focus {
+  background: rgba(255, 0, 60, 0.15);
+  box-shadow: 0 0 10px rgba(255, 0, 60, 0.5);
+}
+
+.input-container button {
+  width: 30%;
+  border-radius: 0 0.8rem 0.8rem 0;
+  background: linear-gradient(90deg, #ff003c, #000000C4);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+  transition: all 0.3s ease;
+}
+
+.input-container button:hover {
+  background: linear-gradient(90deg, #09FF00, #000000B8);
+  color: #fff;
+  box-shadow:
+    0 0 25px rgba(255, 0, 60, 0.8),
+    0 0 10px rgba(255, 70, 0, 0.4) inset;
+  transform: scale(1.05);
+}
+
+a.centered-text {
+  color: #ff4d4d;
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+  text-shadow: 0 0 6px rgba(255, 0, 0, 0.8);
+  animation: flicker 1.8s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.9; text-shadow: 0 0 8px rgba(255,0,0,0.9); }
+  100% { opacity: 0.6; text-shadow: 0 0 4px rgba(255,0,0,0.4); }
+}
+
+
+
+#profileIcon {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #1a0000;
+  border: 2px solid #ff003c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff003c;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px #ff003c, 0 0 55px #ff0055;
+}
+
+#profileIcon:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 40px #ff003c, 0 0 80px #ff0055;
+}
+
+/* ---------------- PROFILE PANEL ---------------- */
+#profileInfoPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(145deg, #200000 0%, #3a0000 100%);
+  border: 2px solid #ff003c;
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 50px #ff003c;
+  z-index: 2000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInScale 0.4s ease forwards;
+}
+
+#profileInfoPanel.active {
+  display: flex;
+}
+
+/* Animation */
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ---------------- HEADER ---------------- */
+.profile-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.profile-info-title {
+  font-size: 22px;
+  color: #ff003c;
+  text-shadow: 0 0 25px #ff003c;
+  letter-spacing: 2px;
+}
+
+#closeProfileInfoBtn {
+  background: none;
+  border: none;
+  color: #ff0055;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#closeProfileInfoBtn:hover {
+  color: #ffffff;
+  text-shadow: 0 0 15px #ff003c;
+}
+
+/* ---------------- CONTENT ---------------- */
+.profile-info-content {
+  width: 100%;
+  text-align: center;
+}
+
+.profile-info-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid #ff003c;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 40px #ff003c, 0 0 80px #ff0022;
+}
+
+.profile-info-username {
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 0 0 20px #ff003c;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ---------------- INFO BOX ---------------- */
+.profile-info-details {
+  background: rgba(25, 0, 0, 0.7);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #ff003c;
+  box-shadow: inset 0 0 25px #ff0011;
+}
+
+.profile-info-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ff0022;
+}
+
+.profile-info-item:last-child {
+  border-bottom: none;
+}
+
+.profile-info-label {
+  color: #ff8888;
+  font-size: 14px;
+}
+
+.profile-info-value {
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-shadow: 0 0 10px #ff003c;
+}
+
+/* ---------------- OVERLAY ---------------- */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 0, 0, 0.8);
+  z-index: 1500;
+  display: none;
+  backdrop-filter: blur(3px);
+}
+
+#overlay.active {
+  display: block;
+}
+
+/* ---------------- NEON BORDER ANIMATION ---------------- */
+@keyframes borderGlow {
+  0% { box-shadow: 0 0 15px #ff003c; }
+  50% { box-shadow: 0 0 45px #ff003c; }
+  100% { box-shadow: 0 0 15px #ff003c; }
+}
+
+#profileInfoPanel {
+  animation: borderGlow 2s infinite ease-in-out;
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+  
+  
+  <!-- 🔴 Profile Icon -->
+<div id="profileIcon">
+  <i class="fas fa-user"></i>
+</div>
+
+<!-- Overlay -->
+<div id="overlay"></div>
+
+<!-- 🔴 Profile Panel -->
+<div id="profileInfoPanel">
+  <div class="profile-info-header">
+    <div class="profile-info-title">BOT INFORMAION</div>
+    <button id="closeProfileInfoBtn"><i class="fas fa-times"></i></button>
+  </div>
+
+  <div class="profile-info-content">
+    <img src="https://files.catbox.moe/1oq196.jpg" alt="Profile Avatar" class="profile-info-avatar">
+    <div class="profile-info-username">𝐒𝐀𝐍𝐍𝐔 𝐌𝐃 𝐎𝐅𝐅𝐈𝐂𝐈𝐀𝐋</div>
+
+    <div class="profile-info-details">
+      <div class="profile-info-item">
+        <span class="profile-info-label">Bot Username:</span>
+        <span class="profile-info-value">𝚂𝙰𝙽𝙽 𝙼𝙳 𝙾𝙵𝙵𝙸𝙲𝙸𝙰𝙻</span>
+      </div>
+
+      <div class="profile-info-item">
+        <span class="profile-info-label">GITHUB Password:</span>
+        <span class="profile-info-value">www.github/ubesiyagen/illaganim.com</span>
+      </div>
+
+      <div class="profile-info-item">
+        <span class="profile-info-label">Role:</span>
+        <span class="profile-info-value">OWNER</span>
+      </div>
+
+      <div class="profile-info-item">
+        <span class="profile-info-label">Expired:</span>
+        <span class="profile-info-value">◉◉◉◉</span>
+      </div>
+
+      <div class="profile-info-item">
+        <span class="profile-info-label">Status:</span>
+        <span class="profile-info-value">Active</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  
+  
+  <div class="container">
+    <div class="box" id="box">
+      <div id="text">
+        <i class="fa fa-user" style="color:#C50707;"></i>
+        <h3>SANNU MD MINI BOT</h3>
+        <h6>𝙲𝚁𝙴𝙰𝚃𝙴𝙳 𝙱𝚈 𝚂𝙰𝙽𝙽𝚄 𝙼𝙳 👻</h6>
+        <h6>🔢 Enter your number with country code</h6>
+
+        <div class="input-container">
+          <input placeholder="9476xxxxxxx" type="number" id="number">
+          <button id="submit">Submit</button>
+        </div>
+
+        <a id="waiting-message" class="centered-text" style="display: none;">Please wait a while...</a>
+        <main id="pair"></main>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:blue;font-weight:bold";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color:white;font-weight-bold";
+      }, 500);
+    }
+
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<a style="color:white;font-weight:bold">Enter your WhatsApp number with Country Code</a><br><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid Number</a><br><br>';
+      } else {
+        const number = c.value.replace(/[^0-9]/g, "");
+        c.type = "text";
+        c.value = "+" + number;
+        c.style = "color:black;font-size:20px";
+        a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
+        let { data } = await axios(`/code?number=${number}`);
+        let code = data.code || "Service Unavailable";
+        a.innerHTML = `<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;">${code}</span></font><br><br><br>`;
+      }
+    });
+    
+    // =======================================
+// 🔴 Profile Panel Interactions
+// =======================================
+const profileIcon = document.getElementById('profileIcon');
+const profileInfoPanel = document.getElementById('profileInfoPanel');
+const closeProfileInfoBtn = document.getElementById('closeProfileInfoBtn');
+const overlay = document.getElementById('overlay');
+
+profileIcon.addEventListener('click', () => {
+  profileInfoPanel.classList.add('active');
+  overlay.classList.add('active');
+});
+
+closeProfileInfoBtn.addEventListener('click', () => {
+  profileInfoPanel.classList.remove('active');
+  overlay.classList.remove('active');
+});
+
+overlay.addEventListener('click', () => {
+  profileInfoPanel.classList.remove('active');
+  overlay.classList.remove('active');
+});
+    
+    
+    
+    
+  </script>
+</body>
+</html>
